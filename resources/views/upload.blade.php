@@ -12,14 +12,24 @@
 <body>
 <br>
 <div class="container">
-  <h2>File Upload</h2>
-  <form action="/store" enctype="multipart/form-data" method="POST">
+    <div class="row">
+  <h2>File Upload and store in database</h2>
+    </div>
+    <div class="row">
+  <form action="{{ route('upload.file') }}" enctype="multipart/form-data" method="POST">
     @csrf
     <div class="form-group">
-      <input type="file" class="form-control-file border" name="file">
+      {{-- <input type="file" class="form-control-file border" name="file"> --}}   {{-- For single file --}}
+      <input type="file" class="form-control-file border" name="file[]" multiple>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+</div>
+<div class="row">
+<h2>Show Files</h2>
+{{-- <img src="{{ asset('storage/upload/me.jpg') }}"/> --}}
+<img src="http://localhost:8000/uploadedfile/me.jpg"/>
+</div>
 </div>
 
 </body>
